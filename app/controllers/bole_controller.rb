@@ -1,0 +1,2 @@
+class BoleController < ApplicationController
+end

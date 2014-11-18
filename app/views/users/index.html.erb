@@ -1,0 +1,58 @@
+<h1>Listing users</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Grade</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.grade %></td>
+        <td><%= user.comment %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
+
+<br>
+
+<h1>Listing quotes</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Body</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quotes.each do |q| %>
+      <tr>
+        <td><%= q.name %></td>
+        <td><%= q.body %></td>
+        <td><%= q.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<h3><%= link_to 'Move to Find page', '/find' %></h3>
+

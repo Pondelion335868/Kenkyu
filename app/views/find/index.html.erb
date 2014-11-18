@@ -1,0 +1,100 @@
+<h1>Listing users</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Grade</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.grade %></td>
+        <td><%= user.comment %></td>
+        <td><%= link_to 'Show', "/find/#{user.id}" %></td>
+        <td><%= link_to 'Edit', edit_find_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--↓2014/10/24追加-->
+<%= @info %>
+
+<br>
+
+<%= link_to 'New User', new_find_path %>
+
+<h1>Listing quotes</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Body</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quotes.each do |q| %>
+      <tr>
+        <td><%= q.name %></td>
+        <td><%= q.body %></td>
+        <td><%= q.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--↓2014/11/12追加-->
+<%= @info2 %>
+
+<!--<h3><%= link_to 'Find Information', new_find_path %></h3>-->
+
+<hr>
+
+<p>論文検索(usersのNameから)</p>
+
+<form method="post" action="/find/find">
+  <p>
+  Name：<input type="text" name="hoge" /><br />
+  <input type="submit" value="検索" />
+  </p>
+</form>
+
+<hr>
+
+<p>論文検索(quotesのBodyから)</p>
+
+<form method="post" action="/find/find2">
+  <p>
+  Body：<input type="text" name="foo" /><br />
+  <input type="submit" value="検索" />
+  </p>
+</form>
+<hr>
+
+<%= text_area :page, :content, :size => "25x15" %>
+<!--<textarea cols="40" id="quotes_body" name="quotes[body]" rows="20"></textarea>-->
+
+<hr>
+
+<!--テキストボックス内の文字列を全選択する(11/11)-->
+<input type="text" style="width: 400px;" onclick="this.select(0,this.value.length)" readonly="readonly" value="ここをクリックすると全選択できます" />
+
+<br>
+
+<!--↓2014/11/12追加-->
+<%= @info3 %>
+
